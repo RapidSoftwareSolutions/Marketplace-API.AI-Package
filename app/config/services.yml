@@ -1,0 +1,381 @@
+parameters:
+    app_bundle.packageName: Api.ai
+    app_bundle.metadata:
+        package: "%app_bundle.packageName%"
+        tagline: API.AI API Wrapper
+        description: Send queries to the api.ai platform.
+        image: https://d1qb2nb5cznatu.cloudfront.net/startups/i/14078-f0a4d39822224958f7fd98f9d4fd827d-medium_jpg.jpg?buster=1362455027
+        repo: https://github.com/RapidSoftwareSolutions/Marketplace-API.AI-Package
+        accounts:
+          domain: api.ai
+          credentials:
+            - apiKey
+        blocks:
+        -
+          name: query
+          args:
+            -
+              name: apiKey
+              type: String
+              info: "Access token obtained from API.AI"
+            -
+              name: query
+              type: String
+              info: "Natural language text to be processed. Requests can have multiple 'query' parameters."
+            -
+              name: sessionId
+              type: String
+              info: "A string token up to 36 symbols long, used to identify the client and to manage session parameters (including contexts) per client."
+            -
+              name: lang
+              type: String
+              info: "Language tag, e.g., en, es etc."
+            -
+              name: context
+              type: Array
+              info: "Optional: Array of additional context objects. Should be sent via a POST /query request. Contexts sent in a query are activated before the query."
+            -
+              name: entities
+              type: Array
+              info: "Optional: Array of entities that replace developer defined entities for this request only. The entity(ies) need to exist in the developer console. Entities JSON format follows the format used in the /entities endpoint."
+            -
+              name: timezone
+              type: String
+              info: "Optional:Time zone from IANA Time Zone Database"
+            -
+              name: locationLatitude
+              type: String
+              info: "Optional: Latitude value."
+            -
+              name: locationLongitude
+              type: String
+              info: "Optional: Longitude value."
+            -
+              name: resetContexts
+              type: String
+              info: "Optional: If true, all current contexts in a session will be reset before the new ones are set. False by default."
+          callbacks:
+            -
+              name: error
+              info: "error"
+            -
+              name: success
+              info: "success"
+        -
+          name: textToSpeech
+          args:
+          args:
+            -
+              name: apiKey
+              type: String
+              info: "Access token obtained from API.AI"
+            -
+              name: text
+              type: String
+              info: "text"
+            -
+              name: language
+              type: String
+              info: "A single header value is used to identify TTS language. For example: en-US"
+          callbacks:
+            -
+              name: error
+              info: "error"
+            -
+              name: success
+              info: "success"
+        -
+          name: getContextx
+          args:
+            -
+              name: apiKey
+              type: String
+              info: "Access token obtained fron API.AI"
+            -
+              name: sessionId
+              type: String
+              info: "Session Id"
+          callbacks:
+            -
+              name: error
+              info: "error"
+            -
+              name: success
+              info: "success"
+        -
+          name: getContext
+          args:
+            -
+              name: apiKey
+              type: String
+              info: "Access token obtained from API.AI."
+            -
+              name: sessionId
+              type: String
+              info: "Session Id"
+            -
+              name: contextName
+              type: String
+              info: "Context name."
+          callbacks:
+            -
+              name: error
+              info: "error"
+            -
+              name: success
+              info: "success"
+        -
+          name: addContext
+          args:
+            -
+              name: apiKey
+              type: String
+              info: "Access token obtained from API.AI."
+            -
+              name: sessionId
+              type: String
+              info: "Session Id"
+            -
+              name: name
+              type: String
+              info: "Context name."
+            -
+              name: lifeSpan
+              type: String
+              info: "Optinal: Number of requests after which the context will expire."
+            -
+              name: parameters
+              type: Array
+              info: "Optional: Array of parameters used with the action."
+          callbacks:
+            -
+              name: error
+              info: "error"
+            -
+              name: success
+              info: "success"
+        -
+          name: clearContexts
+          args:
+            -
+              name: apiKey
+              type: String
+              info: "Access token obtained from API.AI."
+            -
+              name: sessionId
+              type: String
+              info: "Session Id"
+          callbacks:
+            -
+              name: error
+              info: "error"
+            -
+              name: success
+              info: "success"
+        -
+          name: deleteContext
+          args:
+            -
+              name: apiKey
+              type: String
+              info: "Access token obtained from API.AI."
+            -
+              name: sessionId
+              type: String
+              info: "Session Id"
+            -
+              name: contextName
+              type: String
+              info: "Context name."
+          callbacks:
+            -
+              name: error
+              info: "error"
+            -
+              name: success
+              info: "success"
+
+    app_bundle.apiUrl: "https://api.api.ai/v1/"
+    app_bundle.default_profile: "/"
+    app_bundle.query:
+      url: "%app_bundle.apiUrl%"
+      uri: "query?v=20150910"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer {appKey}"
+      method: "post"
+      content_in_body: true
+      content_body_json: true
+      enable_pagination: false
+      limit_field_stop_pagination: false
+      pagination_next_url_key: "next"
+      error_context: "errorDetails"
+      media_response: false
+      object_uri: false
+      object_headers:
+        "{appKey}": "appKey"
+      callback_message:
+        error: "error"
+        success: "success"
+      args:
+        query: "query"
+        sessionId: "sessionId"
+        lang: "lang"
+        contexts: "context"
+        resetContexts: "resetContexts"
+        entities: "entities"
+        timezone: "timezone"
+        location_latitude: "location_latitude"
+        location_longitude: "location_longitude"
+    app_bundle.text_to_speech:
+      url: "%app_bundle.apiUrl%"
+      uri: "tts?v=20150910&"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer {appKey}"
+        Accept-Language: "{language}"
+      method: "get"
+      content_in_body: false
+      content_body_json: false
+      enable_pagination: false
+      limit_field_stop_pagination: false
+      pagination_next_url_key: "next"
+      error_context: "errorDetails"
+      media_response: true
+      object_uri: false
+      object_headers:
+        "{appKey}": "appKey"
+        "{language}": "language"
+      callback_message:
+        error: "error"
+        success: "success"
+      args:
+        text: "text"
+    app_bundle.get_contextx:
+      url: "%app_bundle.apiUrl%"
+      uri: "contexts?"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer {appKey}"
+      method: "get"
+      content_in_body: false
+      content_body_json: false
+      enable_pagination: false
+      limit_field_stop_pagination: true
+      pagination_next_url_key: "next"
+      error_context: "errorDetails"
+      media_response: false
+      object_uri: false
+      object_headers:
+        "{appKey}": "appKey"
+      callback_message:
+        error: "error"
+        success: "success"
+      args:
+        sessionId: "sessionId"
+    app_bundle.get_context:
+      url: "%app_bundle.apiUrl%"
+      uri: "contexts/{contextName}?"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer {appKey}"
+      method: "get"
+      content_in_body: false
+      content_body_json: false
+      enable_pagination: false
+      limit_field_stop_pagination: true
+      pagination_next_url_key: "next"
+      error_context: "errorDetails"
+      media_response: false
+      object_uri:
+        "{contextName}": "contextName"
+      object_headers:
+        "{appKey}": "appKey"
+      callback_message:
+        error: "error"
+        success: "success"
+      args:
+        sessionId: "sessionId"
+    app_bundle.add_context:
+      url: "%app_bundle.apiUrl%"
+      uri: "contexts?sessionId={sessionId}"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer {appKey}"
+      method: "post"
+      content_in_body: true
+      content_body_json: true
+      enable_pagination: false
+      limit_field_stop_pagination: false
+      pagination_next_url_key: "next"
+      error_context: "errorDetails"
+      media_response: false
+      object_uri:
+        "{sessionId}": "sessionId"
+      object_headers:
+        "{appKey}": "appKey"
+      callback_message:
+        error: "error"
+        success: "success"
+      args:
+        name: "name"
+        lifespan: "lifeSpan"
+        parameters: "parameters"
+    app_bundle.clear_contexts:
+      url: "%app_bundle.apiUrl%"
+      uri: "contexts?"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer {appKey}"
+      method: "delete"
+      content_in_body: false
+      content_body_json: false
+      enable_pagination: false
+      limit_field_stop_pagination: false
+      pagination_next_url_key: "next"
+      error_context: "errorDetails"
+      media_response: false
+      object_uri: false
+      object_headers:
+        "{appKey}": "appKey"
+      callback_message:
+        error: "error"
+        success: "success"
+      args:
+        sessionId: "sessionId"
+    app_bundle.delete_context:
+      url: "%app_bundle.apiUrl%"
+      uri: "contexts/{contextName}?"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer {appKey}"
+      method: "delete"
+      content_in_body: false
+      content_body_json: false
+      enable_pagination: false
+      limit_field_stop_pagination: false
+      pagination_next_url_key: "next"
+      error_context: "errorDetails"
+      media_response: false
+      object_uri:
+        "{contextName}": "contextName"
+      object_headers:
+        "{appKey}": "appKey"
+      callback_message:
+        error: "error"
+        success: "success"
+      args:
+        sessionId: "sessionId"
+
+services:
+    app_bundle.block_abstract:
+        class: AppBundle\Utils\Package\Abstracts\BlockAbstract
+        abstract: true
+        arguments: ["@request_stack", "@buzz", "@app_bundle.request_builder", "@app_bundle.finder"]
+    app_bundle.package:
+        class: AppBundle\Utils\Package\Package
+        parent: app_bundle.block_abstract
+    app_bundle.finder:
+        class: AppBundle\Utils\Library\Finder
+    app_bundle.request_builder:
+        class: AppBundle\Utils\Library\RequestBuilder
