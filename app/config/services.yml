@@ -2,7 +2,7 @@ parameters:
     app_bundle.packageName: Api.ai
     app_bundle.metadata:
         package: "%app_bundle.packageName%"
-        tagline: API.AI API Wrapper
+        tagline: API.AI API
         description: Send queries to the api.ai platform.
         image: https://d1qb2nb5cznatu.cloudfront.net/startups/i/14078-f0a4d39822224958f7fd98f9d4fd827d-medium_jpg.jpg?buster=1362455027
         repo: https://github.com/RapidSoftwareSolutions/Marketplace-API.AI-Package
@@ -210,13 +210,15 @@ parameters:
       limit_field_stop_pagination: false
       pagination_next_url_key: "next"
       error_context: "errorDetails"
+      extra_context: "actionIncomplete"
       media_response: false
       object_uri: false
       object_headers:
         "{appKey}": "appKey"
       callback_message:
+        success: "success-actionComplete"
+        extra: "success-actionIncomplete"
         error: "error"
-        success: "success"
       args:
         query: "query"
         sessionId: "sessionId"
@@ -241,6 +243,7 @@ parameters:
       limit_field_stop_pagination: false
       pagination_next_url_key: "next"
       error_context: "errorDetails"
+      extra_context: false
       media_response: true
       object_uri: false
       object_headers:
@@ -249,6 +252,7 @@ parameters:
       callback_message:
         error: "error"
         success: "success"
+        extra: false
       args:
         text: "text"
     app_bundle.get_contextx:
@@ -264,6 +268,7 @@ parameters:
       limit_field_stop_pagination: true
       pagination_next_url_key: "next"
       error_context: "errorDetails"
+      extra_context: false
       media_response: false
       object_uri: false
       object_headers:
@@ -271,6 +276,7 @@ parameters:
       callback_message:
         error: "error"
         success: "success"
+        extra: false
       args:
         sessionId: "sessionId"
     app_bundle.get_context:
@@ -286,6 +292,7 @@ parameters:
       limit_field_stop_pagination: true
       pagination_next_url_key: "next"
       error_context: "errorDetails"
+      extra_context: false
       media_response: false
       object_uri:
         "{contextName}": "contextName"
@@ -294,6 +301,7 @@ parameters:
       callback_message:
         error: "error"
         success: "success"
+        extra: false
       args:
         sessionId: "sessionId"
     app_bundle.add_context:
@@ -309,6 +317,7 @@ parameters:
       limit_field_stop_pagination: false
       pagination_next_url_key: "next"
       error_context: "errorDetails"
+      extra_context: false
       media_response: false
       object_uri:
         "{sessionId}": "sessionId"
@@ -317,6 +326,7 @@ parameters:
       callback_message:
         error: "error"
         success: "success"
+        extra: false
       args:
         name: "name"
         lifespan: "lifeSpan"
@@ -334,6 +344,7 @@ parameters:
       limit_field_stop_pagination: false
       pagination_next_url_key: "next"
       error_context: "errorDetails"
+      extra_context: false
       media_response: false
       object_uri: false
       object_headers:
@@ -341,6 +352,7 @@ parameters:
       callback_message:
         error: "error"
         success: "success"
+        extra: false
       args:
         sessionId: "sessionId"
     app_bundle.delete_context:
@@ -356,6 +368,7 @@ parameters:
       limit_field_stop_pagination: false
       pagination_next_url_key: "next"
       error_context: "errorDetails"
+      extra_context: false
       media_response: false
       object_uri:
         "{contextName}": "contextName"
@@ -364,6 +377,7 @@ parameters:
       callback_message:
         error: "error"
         success: "success"
+        extra: false
       args:
         sessionId: "sessionId"
 

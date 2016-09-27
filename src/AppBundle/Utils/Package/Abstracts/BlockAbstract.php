@@ -120,10 +120,10 @@ abstract class BlockAbstract
             $response = $this->httpClient->{$schema['method']}($request['url'], $request['headers']);
         }
 
-        if($schema['media_response'] !== false){
+        if ($schema['media_response'] !== false) {
 
             return chunk_split(base64_encode($response->getContent()));
-        }else {
+        } else {
 
             return $response->getContent();
         }
@@ -137,6 +137,9 @@ abstract class BlockAbstract
         if ($this->finder->recursiveFindValueInMultiArray($this->result, $schema['error_context'])) {
 
             $this->response = ['callback' => $schema['callback_message']['error'], 'contextWrites' => ['to' => json_encode($this->result)]];
+        } elseif ($this->finder->recursiveFindValueInMultiArray($this->result, $schema['extra_context'])) {
+
+            $this->response = ['callback' => $schema['callback_message']['extra'], 'contextWrites' => ['to' => json_encode($this->result)]];
         } else {
 
             $this->response = ['callback' => $schema['callback_message']['success'], 'contextWrites' => ['to' => json_encode($this->result)]];

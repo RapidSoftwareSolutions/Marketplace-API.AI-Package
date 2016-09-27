@@ -20,7 +20,7 @@ class Finder
      */
     public function recursiveFindValueInMultiArray($array, $needle)
     {
-        if ((array)$array !== $array) {
+        if ((array)$array !== $array || $needle === false) {
 
             return false;
         } else {
