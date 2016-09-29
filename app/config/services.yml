@@ -32,24 +32,20 @@ parameters:
               info: "Language tag, e.g., en, es etc."
             -
               name: context
-              type: Array
-              info: "Optional: Array of additional context objects. Should be sent via a POST /query request. Contexts sent in a query are activated before the query."
+              type: JSON
+              info: "Optional: Array of additional context objects. Should be sent via a POST /query request. Contexts sent in a query are activated before the query. JSON format."
             -
               name: entities
-              type: Array
+              type: JSON
               info: "Optional: Array of entities that replace developer defined entities for this request only. The entity(ies) need to exist in the developer console. Entities JSON format follows the format used in the /entities endpoint."
             -
               name: timezone
               type: String
               info: "Optional:Time zone from IANA Time Zone Database"
             -
-              name: locationLatitude
-              type: String
-              info: "Optional: Latitude value."
-            -
-              name: locationLongitude
-              type: String
-              info: "Optional: Longitude value."
+              name: location
+              type: JSON
+              info: "Optional: Latitude value. Json format."
             -
               name: resetContexts
               type: String
@@ -59,8 +55,11 @@ parameters:
               name: error
               info: "error"
             -
-              name: success
-              info: "success"
+              name: success-actionComplete
+              info: "success-actionComplete"
+            -
+              name: success -actionIncomplete
+              info: "success -actionIncomplete"
         -
           name: textToSpeech
           args:
@@ -146,7 +145,7 @@ parameters:
             -
               name: parameters
               type: JSON
-              info: "Optional: Array of parameters used with the action. Example input: name:Sam,value:test,surname:tomi,..."
+              info: "Optional: Array of parameters used with the action. Json format."
           callbacks:
             -
               name: error
@@ -202,7 +201,7 @@ parameters:
       uri: "query?v=20150910"
       headers:
         Content-Type: "application/json"
-        Authorization: "Bearer *appKey*"
+        Authorization: "Bearer {appKey}"
       method: "post"
       content_in_body: true
       content_body_json: true
@@ -214,7 +213,7 @@ parameters:
       media_response: false
       object_uri: false
       object_headers:
-        "*appKey*": "apiKey"
+        "{appKey}": "apiKey"
       callback_message:
         success: "success-actionComplete"
         extra: "success-actionIncomplete"

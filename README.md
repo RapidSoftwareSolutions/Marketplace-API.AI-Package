@@ -26,11 +26,10 @@ Method description
 | query            | String| Natural language text to be processed. Requests can have multiple 'query' parameters.
 | sessionId        | String| A string token up to 36 symbols long, used to identify the client and to manage session parameters (including contexts) per client.
 | lang             | String| Language tag, e.g., en, es etc.
-| context          | Array| Optional: Array of additional context objects. Should be sent via a POST /query request. Contexts sent in a query are activated before the query.
-| entities         | Array| Optional: Array of entities that replace developer defined entities for this request only. The entity(ies) need to exist in the developer console. Entities JSON format follows the format used in the /entities endpoint.
+| context          | JSON| Optional: Array of additional context objects. Should be sent via a POST /query request. Contexts sent in a query are activated before the query.
+| entities         | JSON| Optional: Array of entities that replace developer defined entities for this request only. The entity(ies) need to exist in the developer console. Entities JSON format follows the format used in the /entities endpoint.
 | timezone         | String| Optional:Time zone from IANA Time Zone Database
-| locationLatitude | String| Optional: Latitude value.
-| locationLongitude| String| Optional: Longitude value.
+| location         | JSON| Optional: Latitude value.
 | resetContexts    | String| Optional: If true, all current contexts in a session will be reset before the new ones are set. False by default.
 
 #### Request example
@@ -206,7 +205,7 @@ Method description
 | sessionId | String| Session Id
 | name      | String| Context name.
 | lifeSpan  | String| Optinal: Number of requests after which the context will expire.
-| parameters| Array| Optional: Array of parameters used with the action.
+| parameters| JSON| Optional: Array of parameters used with the action.
 
 #### Request example
 ```json

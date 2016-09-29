@@ -42,11 +42,11 @@ abstract class BlockAbstract
      */
     public function __construct($request, $httpClient, $requestBuilder, $finder)
     {
-        $this->request = $request->getCurrentRequest();
         $this->httpClient = $httpClient;
         $this->requestBuilder = $requestBuilder;
         $this->finder = $finder;
-        $this->body = json_decode($requestBuilder->normalizeJson($this->request->getContent()), true);
+        $this->request = $request->getCurrentRequest();
+        $this->body = json_decode(str_replace('\\"', '"', $requestBuilder->normalizeJson($this->request->getContent())), true);
         $this->parameters = $this->body['args'];
     }
 
@@ -114,6 +114,7 @@ abstract class BlockAbstract
     public function sendRequest($schema, $request)
     {
         if ($schema['content_in_body']) {
+
             $response = $this->httpClient->{$schema['method']}($request['url'], $request['headers'], $request['body']);
         } else {
 
