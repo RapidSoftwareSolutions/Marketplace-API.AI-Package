@@ -145,8 +145,8 @@ parameters:
               info: "Optinal: Number of requests after which the context will expire."
             -
               name: parameters
-              type: Array
-              info: "Optional: Array of parameters used with the action."
+              type: JSON
+              info: "Optional: Array of parameters used with the action. Example input: name:Sam,value:test,surname:tomi,..."
           callbacks:
             -
               name: error
@@ -202,7 +202,7 @@ parameters:
       uri: "query?v=20150910"
       headers:
         Content-Type: "application/json"
-        Authorization: "Bearer {appKey}"
+        Authorization: "Bearer *appKey*"
       method: "post"
       content_in_body: true
       content_body_json: true
@@ -214,7 +214,7 @@ parameters:
       media_response: false
       object_uri: false
       object_headers:
-        "{appKey}": "appKey"
+        "*appKey*": "apiKey"
       callback_message:
         success: "success-actionComplete"
         extra: "success-actionIncomplete"
@@ -247,7 +247,7 @@ parameters:
       media_response: true
       object_uri: false
       object_headers:
-        "{appKey}": "appKey"
+        "{appKey}": "apiKey"
         "{language}": "language"
       callback_message:
         error: "error"
@@ -272,7 +272,7 @@ parameters:
       media_response: false
       object_uri: false
       object_headers:
-        "{appKey}": "appKey"
+        "{appKey}": "apiKey"
       callback_message:
         error: "error"
         success: "success"
@@ -297,7 +297,7 @@ parameters:
       object_uri:
         "{contextName}": "contextName"
       object_headers:
-        "{appKey}": "appKey"
+        "{appKey}": "apiKey"
       callback_message:
         error: "error"
         success: "success"
@@ -322,7 +322,7 @@ parameters:
       object_uri:
         "{sessionId}": "sessionId"
       object_headers:
-        "{appKey}": "appKey"
+        "{appKey}": "apiKey"
       callback_message:
         error: "error"
         success: "success"
@@ -348,7 +348,7 @@ parameters:
       media_response: false
       object_uri: false
       object_headers:
-        "{appKey}": "appKey"
+        "{appKey}": "apiKey"
       callback_message:
         error: "error"
         success: "success"
@@ -373,7 +373,7 @@ parameters:
       object_uri:
         "{contextName}": "contextName"
       object_headers:
-        "{appKey}": "appKey"
+        "{appKey}": "apiKey"
       callback_message:
         error: "error"
         success: "success"

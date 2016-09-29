@@ -17,7 +17,6 @@ class RequestBuilder
                 if (isset($parameters[$rapidApiValue]) && $parameters[$rapidApiValue] != '') {
 
                     $uri[$apiValue] = $parameters[$rapidApiValue];
-
                 }
             }
 
@@ -42,7 +41,6 @@ class RequestBuilder
                 if (isset($parameters[$rapidApiValue]) && $parameters[$rapidApiValue] != '') {
 
                     $query[$apiValue] = $parameters[$rapidApiValue];
-
                 }
             }
             if ($schema['content_body_json'] !== false) {
@@ -70,7 +68,6 @@ class RequestBuilder
                 if (isset($parameters[$rapidApiValue]) && $parameters[$rapidApiValue] != '') {
 
                     $objects[$apiValue] = $parameters[$rapidApiValue];
-
                 }
             }
 
@@ -88,4 +85,43 @@ class RequestBuilder
             return $schema['headers'];
         }
     }
+
+    /**
+     * name:Sam,surname:tomi => ['name' => 'Sam', 'surname' => 'tomi']
+     *
+     * @param $str
+     * @return array
+     */
+    public function explodeStringToArray($str)
+    {
+        $values = explode(';', $str);
+        $result = [];
+
+        foreach ($values as $value) {
+            $temp = explode(',', $value);
+            //$res = [];
+            foreach ($temp as $key => $name) {
+                list($k, $v) = explode(':', $name);
+                $result[$k] = $v;
+            }
+
+            //$result[] = $res;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Normalize json arrays, objects, array of objects, nested objects with array and objects from rtp to valid array
+     *
+     * @param $json
+     * @return mixed
+     */
+    public function normalizeJson($json)
+    {
+        return preg_replace_callback('~"([\[{].*?[}\]])"~s', function ($match) {
+            return preg_replace('~\s*"\s*~', "\"", $match[1]);
+        }, $json);
+    }
+
 }
