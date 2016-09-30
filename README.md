@@ -34,16 +34,28 @@ Method description
 
 #### Request example
 ```json
-{	"apiKey": "...",
-	"query": "...",
-	"sessionId": "...",
-	"lang": "...",
-	"context": "...",
-	"entities": "...",
-	"timezone": "...",
-	"locationLatitude": "...",
-	"locationLongitude": "...",
-	"resetContexts": "..."
+{
+	"args": {
+		"apiKey": "token",
+		"query": "and for tomorrow",
+		"timezone": "GMT-5",
+		"lang": "en",
+		"contexts": [{
+			"name": "weather",
+			"parameters": {
+				"city": "London"
+			},
+			"lifespan": 4
+		}, {
+			"name": "music",
+			"parameters": {
+				"city": "London",
+				"test": "value"
+			},
+			"lifespan": 4
+		}],
+		"sessionId": "1234567890"
+	}
 }
 ```
 #### Response example
@@ -209,11 +221,17 @@ Method description
 
 #### Request example
 ```json
-{	"apiKey": "...",
-	"sessionId": "...",
-	"name": "...",
-	"lifeSpan": "...",
-	"parameters": "..."
+{
+	"args": {
+		"apiKey": "token",
+		"sessionId": "1234567890",
+		"name": "test",
+		"lifeSpan": "3",
+		"parameters": {
+			"name": "Sam",
+			"value": "test"
+		}
+	}
 }
 ```
 #### Response example
