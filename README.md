@@ -29,33 +29,31 @@ Method description
 | context          | JSON| Optional: Array of additional context objects. Should be sent via a POST /query request. Contexts sent in a query are activated before the query.
 | entities         | JSON| Optional: Array of entities that replace developer defined entities for this request only. The entity(ies) need to exist in the developer console. Entities JSON format follows the format used in the /entities endpoint.
 | timezone         | String| Optional:Time zone from IANA Time Zone Database
-| location         | JSON| Optional: Latitude value.
+| location         | JSON| Optional: Latitude and longitude values. Example: {"latitude": 37.4256293, "longitude":-122.20539}.
 | resetContexts    | String| Optional: If true, all current contexts in a session will be reset before the new ones are set. False by default.
 
 #### Request example
 ```json
 {
-	"args": {
-		"apiKey": "token",
-		"query": "and for tomorrow",
-		"timezone": "GMT-5",
-		"lang": "en",
-		"contexts": [{
-			"name": "weather",
-			"parameters": {
-				"city": "London"
-			},
-			"lifespan": 4
-		}, {
-			"name": "music",
-			"parameters": {
-				"city": "London",
-				"test": "value"
-			},
-			"lifespan": 4
-		}],
-		"sessionId": "1234567890"
-	}
+	"apiKey": "token",
+	"query": "and for tomorrow",
+	"timezone": "GMT-5",
+	"lang": "en",
+	"contexts": [{
+		"name": "weather",
+		"parameters": {
+			"city": "London"
+		},
+		"lifespan": 4
+	}, {
+		"name": "music",
+		"parameters": {
+			"city": "London",
+			"test": "value"
+		},
+		"lifespan": 4
+	}],
+	"sessionId": "1234567890"
 }
 ```
 #### Response example
@@ -151,7 +149,8 @@ Method description
 
 #### Request example
 ```json
-{	"apiKey": "...",
+{	
+    "apiKey": "...",
 	"sessionId": "..."
 }
 ```
@@ -185,7 +184,8 @@ Method description
 
 #### Request example
 ```json
-{	"apiKey": "...",
+{	
+    "apiKey": "...",
 	"sessionId": "..."
 }
 ```
@@ -222,15 +222,13 @@ Method description
 #### Request example
 ```json
 {
-	"args": {
-		"apiKey": "token",
-		"sessionId": "1234567890",
-		"name": "test",
-		"lifeSpan": "3",
-		"parameters": {
-			"name": "Sam",
-			"value": "test"
-		}
+	"apiKey": "token",
+	"sessionId": "1234567890",
+	"name": "test",
+	"lifeSpan": "3",
+	"parameters": {
+		"name": "Sam",
+		"value": "test"
 	}
 }
 ```
@@ -265,7 +263,8 @@ Method description
 
 #### Request example
 ```json
-{	"apiKey": "...",
+{	
+    "apiKey": "...",
 	"sessionId": "..."
 }
 ```
@@ -302,7 +301,8 @@ Method description
 
 #### Request example
 ```json
-{	"apiKey": "...",
+{	
+    "apiKey": "...",
 	"sessionId": "...",
 	"contextName": "..."
 }
