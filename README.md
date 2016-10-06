@@ -22,7 +22,7 @@ Method description
 
 | Field            | Type  | Description
 |------------------|-------|----------
-| apiKey           | String| Access token obtained from API.AI
+| apiKey           | credentials| Access token obtained from API.AI
 | query            | String| Natural language text to be processed. Requests can have multiple 'query' parameters.
 | sessionId        | String| A string token up to 36 symbols long, used to identify the client and to manage session parameters (including contexts) per client.
 | lang             | String| Language tag, e.g., en, es etc.
@@ -113,7 +113,7 @@ Method description
 
 | Field   | Type  | Description
 |---------|-------|----------
-| apiKey  | String| Access token obtained fron API.AI
+| apiKey  | credentials| Access token obtained fron API.AI
 | text    | String| text
 | language| String| A single header value is used to identify TTS language. For example: en-US
 
@@ -144,7 +144,7 @@ Method description
 
 | Field    | Type  | Description
 |----------|-------|----------
-| apiKey   | String| Access token obtained fron API.AI
+| apiKey   | credentials| Access token obtained fron API.AI
 | sessionId| String| Session Id
 
 #### Request example
@@ -178,7 +178,7 @@ Method description
 
 | Field    | Type  | Description
 |----------|-------|----------
-| apiKey   | String| Access token obtained fron API.AI
+| apiKey   | credentials| Access token obtained fron API.AI
 | sessionId| String| Session Id
 | contextName| String| Context name.
 
@@ -213,7 +213,7 @@ Method description
 
 | Field     | Type  | Description
 |-----------|-------|----------
-| apiKey    | String| Access token obtained fron API.AI.
+| apiKey    | credentials| Access token obtained fron API.AI.
 | sessionId | String| Session Id
 | name      | String| Context name.
 | lifeSpan  | String| Optinal: Number of requests after which the context will expire.
@@ -258,7 +258,7 @@ Method description
 
 | Field    | Type  | Description
 |----------|-------|----------
-| apiKey   | String| Access token obtained fron API.AI.
+| apiKey   | credentials| Access token obtained fron API.AI.
 | sessionId| String| Session Id
 
 #### Request example
@@ -295,7 +295,7 @@ Method description
 
 | Field      | Type  | Description
 |------------|-------|----------
-| apiKey     | String| Access token obtained fron API.AI.
+| apiKey     | credentials| Access token obtained fron API.AI.
 | sessionId  | String| Session Id
 | contextName| String| Context name.
 
