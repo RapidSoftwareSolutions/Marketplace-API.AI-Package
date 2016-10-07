@@ -25,7 +25,7 @@ class PackageController extends Controller
     }
 
     /**
-     * @Route("/api/{packageName}/query", requirements={"packageName": "ApiAi"})
+     * @Route("/api/{packageName}/query", requirements={"packageName": "ApiAI"})
      * @Method({"POST"})
      *
      * @return mixed
@@ -42,7 +42,7 @@ class PackageController extends Controller
     }
 
     /**
-     * @Route("/api/{packageName}/textToSpeech", requirements={"packageName": "ApiAi"})
+     * @Route("/api/{packageName}/textToSpeech", requirements={"packageName": "ApiAI"})
      * @Method({"POST"})
      *
      * @return mixed
@@ -59,7 +59,7 @@ class PackageController extends Controller
     }
 
     /**
-     * @Route("/api/{packageName}/getContextx", requirements={"packageName": "ApiAi"})
+     * @Route("/api/{packageName}/getContextx", requirements={"packageName": "ApiAI"})
      * @Method({"POST"})
      *
      * @return mixed
@@ -76,7 +76,7 @@ class PackageController extends Controller
     }
 
     /**
-     * @Route("/api/{packageName}/getContext", requirements={"packageName": "ApiAi"})
+     * @Route("/api/{packageName}/getContext", requirements={"packageName": "ApiAI"})
      * @Method({"POST"})
      *
      * @return mixed
@@ -93,7 +93,7 @@ class PackageController extends Controller
     }
 
     /**
-     * @Route("/api/{packageName}/addContext", requirements={"packageName": "ApiAi"})
+     * @Route("/api/{packageName}/addContext", requirements={"packageName": "ApiAI"})
      * @Method({"POST"})
      *
      * @return mixed
@@ -110,7 +110,7 @@ class PackageController extends Controller
     }
 
     /**
-     * @Route("/api/{packageName}/clearContexts", requirements={"packageName": "ApiAi"})
+     * @Route("/api/{packageName}/clearContexts", requirements={"packageName": "ApiAI"})
      * @Method({"POST"})
      *
      * @return mixed
@@ -127,7 +127,7 @@ class PackageController extends Controller
     }
 
     /**
-     * @Route("/api/{packageName}/deleteContext", requirements={"packageName": "ApiAi"})
+     * @Route("/api/{packageName}/deleteContext", requirements={"packageName": "ApiAI"})
      * @Method({"POST"})
      *
      * @return mixed
