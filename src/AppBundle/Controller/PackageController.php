@@ -14,7 +14,7 @@ class PackageController extends Controller
 {
     /**
      *
-     * @Route("/api/{packageName}", requirements={"packageName": "ApiAi"})
+     * @Route("/api/{packageName}", requirements={"packageName": "ApiAI"})
      * @Method({"GET"})
      *
      * @return JsonResponse
