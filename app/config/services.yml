@@ -1,5 +1,5 @@
 parameters:
-    app_bundle.packageName: Api.ai
+    app_bundle.packageName: ApiAI
     app_bundle.metadata:
         package: "%app_bundle.packageName%"
         tagline: API.AI API
