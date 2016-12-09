@@ -6,17 +6,7 @@ Send queries to the api.ai platform.
 ## How to get credentials: 
 0. Got to https://console.api.ai 
 1. Setting->general, copy access_token.
-
-## TOC: 
-* [query](#query)
-* [textToSpeech](#textToSpeech)
-* [getContextx](#getContextx)
-* [getContext](#getContext)
-* [addContext](#addContext)
-* [clearContexts](#clearContexts)
-* [deleteContext](#deleteContext)
  
-<a name="query"/>
 ## Api.ai.query
 Method description
 
@@ -56,58 +46,7 @@ Method description
 	"sessionId": "1234567890"
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":{
-                   "id": "9b49f2fb-fdd4-46f1-aa0d-7c4ed2caccdc",
-                   "timestamp": "2016-09-08T05:34:23.167Z",
-                   "result": {
-                     "source": "agent",
-                     "resolvedQuery": "my name is Sam and I live in Paris",
-                     "action": "",
-                     "actionIncomplete": false,
-                     "parameters": {
-                       "city": "Paris",
-                       "user_name": "Sam"
-                     },
-                     "contexts": [
-                       {
-                         "name": "greetings",
-                         "parameters": {
-                           "city": "Paris",
-                           "user_name": "Sam",
-                           "city.original": "Paris",
-                           "user_name.original": "Sam"
-                         },
-                         "lifespan": 5
-                       }
-                     ],
-                     "metadata": {
-                       "intentId": "373a354b-c15a-4a60-ac9d-a9f2aee76cb4",
-                       "webhookUsed": "false",
-                       "intentName": "greetings"
-                     },
-                     "fulfillment": {
-                       "speech": "Nice to meet you, Sam!"
-                     },
-                     "score": 1
-                   },
-                   "status": {
-                     "code": 200,
-                     "errorType": "success"
-                   },
-                   "sessionId": "7501656c-b86e-496f-ae03-c2c800b851ff"
-                 }
-		}
-	}
-}
-```
 
-<a name="textToSpeech"/>
 ## Api.ai.textToSpeech
 Method description
 
@@ -124,21 +63,7 @@ Method description
 	"language": "..."
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-                    wav audio file encoded with base64
-                  }
-		}
-	}
-}
-```
 
-<a name="getContextx"/>
 ## Api.ai.getContextx
 Method description
 
@@ -154,25 +79,7 @@ Method description
 	"sessionId": "..."
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":[{
-                 	"name": "greetings",
-                 	"parameters": {
-                 		"name": "Sam"
-                 	},
-                 	"lifespan": 3
-                 }]
-		}
-	}
-}
-```
 
-<a name="getContext"/>
 ## Api.ai.getContext
 Method description
 
@@ -189,25 +96,7 @@ Method description
 	"sessionId": "..."
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":[{
-                 	"name": "greetings",
-                 	"parameters": {
-                 		"name": "Sam"
-                 	},
-                 	"lifespan": 3
-                 }]
-		}
-	}
-}
-```
 
-<a name="addContext"/>
 ## Api.ai.addContext
 Method description
 
@@ -232,27 +121,7 @@ Method description
 	}
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":{
-                 	"names": [
-                 		"greetings"
-                 	],
-                 	"status": {
-                 		"code": 200,
-                 		"errorType": "success"
-                 	}
-                 }
-		}
-	}
-}
-```
 
-<a name="clearContexts"/>
 ## Api.ai.clearContexts
 Method description
 
@@ -268,28 +137,7 @@ Method description
 	"sessionId": "..."
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":{
-                 	"names": [
-                 			"greetings"
-                 		]
-                 		...,
-                 	"status": {
-                 		"code": 200,
-                 		"errorType": "success"
-                 	}
-                 }
-		}
-	}
-}
-```
 
-<a name="deleteContext"/>
 ## Api.ai.deleteContext
 Method description
 
@@ -305,25 +153,6 @@ Method description
     "apiKey": "...",
 	"sessionId": "...",
 	"contextName": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":{
-                 	"names": [
-                 		"greetings"
-                 	],
-                 	"status": {
-                 		"code": 200,
-                 		"errorType": "success"
-                 	}
-                 }
-		}
-	}
 }
 ```
 
