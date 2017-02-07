@@ -1,3 +1,6 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/ApiAI/functions?utm_source=RapidAPIGitHub_APIAIFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
+
 # Api.ai Package
 Send queries to the api.ai platform.
 * Domain: api.ai
